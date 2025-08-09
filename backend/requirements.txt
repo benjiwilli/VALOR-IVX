@@ -52,7 +52,7 @@ gradio==3.40.1
 dash==2.14.0
 bokeh==3.2.2
 altair==5.1.2
-holoviews==1.17.1
+holoviews==1.20.2
 hvplot==0.9.2
 panel==1.2.3
 voila==0.4.0
