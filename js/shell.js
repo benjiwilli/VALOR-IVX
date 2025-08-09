@@ -26,9 +26,14 @@ class ValorShell {
     this.bindProgressiveDisclosure();
     this.bindKeyboardShortcuts();
     this.bindRunAnalysisEvents();
+    // New: theme toggle support
+    this.bindThemeToggle();
+    this.initTheme();
     
     // Initialize the current module
     await this.loadModule(this.currentModule);
+    // Ensure initial module becomes visible
+    await this.showModule(this.currentModule);
     
     // Setup performance monitoring
     this.setupPerformanceMonitoring();
@@ -134,6 +139,12 @@ class ValorShell {
         e.preventDefault();
         this.loadPresetData();
       }
+
+      // New: Alt+T to toggle Ive theme
+      if (e.altKey && e.key.toLowerCase() === 't') {
+        e.preventDefault();
+        this.toggleTheme();
+      }
       
       // Module switching shortcuts
       if (e.altKey) {
@@ -170,6 +181,16 @@ class ValorShell {
         this.runAnalysis();
       });
     });
+  }
+
+  // New: theme toggle button binding
+  bindThemeToggle() {
+    const btn = document.getElementById('toggleTheme');
+    if (btn) {
+      btn.addEventListener('click', () => {
+        this.toggleTheme();
+      });
+    }
   }
   
   /**
@@ -557,6 +578,38 @@ class ValorShell {
         }
       }, 0);
     });
+  }
+  
+  // New: initialize theme from localStorage
+  initTheme() {
+    try {
+      const pref = localStorage.getItem('valor.theme') || 'default';
+      if (pref === 'ive') {
+        document.body.classList.add('theme-ive');
+      } else {
+        document.body.classList.remove('theme-ive');
+      }
+      this.updateThemeButtonState();
+    } catch {
+      // no-op
+    }
+  }
+
+  // New: toggle theme and persist
+  toggleTheme() {
+    const isIve = document.body.classList.toggle('theme-ive');
+    try {
+      localStorage.setItem('valor.theme', isIve ? 'ive' : 'default');
+    } catch {}
+    this.updateThemeButtonState();
+  }
+
+  // New: reflect theme state on button aria
+  updateThemeButtonState() {
+    const btn = document.getElementById('toggleTheme');
+    if (!btn) return;
+    const active = document.body.classList.contains('theme-ive');
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
   }
 }
 
