@@ -83,8 +83,9 @@ class ValorShell {
           this.toggleSection(header, content);
         });
         
+        // buttons already accessible via keyboard, keep space handling for safety
         header.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === ' ') {
             e.preventDefault();
             this.toggleSection(header, content);
           }
@@ -97,7 +98,7 @@ class ValorShell {
    * Toggle section with smooth animation
    */
   toggleSection(header, content) {
-    const isExpanded = header.getAttribute('aria-expanded') === 'true';
+  const isExpanded = header.getAttribute('aria-expanded') === 'true';
     const newState = !isExpanded;
     
     header.setAttribute('aria-expanded', newState.toString());
@@ -555,18 +556,14 @@ class ValorShell {
   setupPerformanceMonitoring() {
     // Monitor long tasks
     if ('PerformanceObserver' in window) {
-      try {
-        const observer = new PerformanceObserver((list) => {
-          for (const entry of list.getEntries()) {
-            if (entry.duration > 50) {
-              console.warn(`⚠️ Long task detected: ${entry.duration.toFixed(1)}ms`);
-            }
+      const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (entry.duration > 50) {
+            console.warn(`⚠️ Long task detected: ${entry.duration.toFixed(1)}ms`);
           }
-        });
-        observer.observe({ entryTypes: ['longtask'] });
-      } catch (e) {
-        console.log('PerformanceObserver not supported');
-      }
+        }
+      });
+      try { observer.observe({ entryTypes: ['longtask'] }); } catch {}
     }
     
     // Monitor navigation timing
@@ -624,8 +621,9 @@ if (document.readyState === 'loading') {
 
 // Handle browser back/forward
 window.addEventListener('popstate', (e) => {
-  if (e.state && e.state.module && window.valorShell) {
-    window.valorShell.switchModule(e.state.module);
+  const moduleId = e?.state?.module;
+  if (moduleId && window?.valorShell) {
+    window.valorShell.switchModule(moduleId);
   }
 });
 

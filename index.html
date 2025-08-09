@@ -1,20 +1,22 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Valor IVX — Financial Analysis Platform</title>
-<link rel="stylesheet" href="./css/main.css">
-<link rel="stylesheet" href="./css/components.css">
-<link rel="stylesheet" href="./css/modules.css">
-<link rel="stylesheet" href="./css/theme-ive.css">
-<meta name="color-scheme" content="light dark" />
-<link rel="prefetch" href="./js/modules/advanced-charting.js" as="script" />
-<link rel="prefetch" href="./js/modules/video-conference.js" as="script" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Valor IVX — Financial Analysis Platform</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/components.css">
+  <link rel="stylesheet" href="./css/modules.css">
+  <link rel="stylesheet" href="./css/theme-ive.css">
+  <meta name="color-scheme" content="light dark" />
+  <link rel="prefetch" href="./js/modules/advanced-charting.js" as="script" />
+  <link rel="prefetch" href="./js/modules/video-conference.js" as="script" />
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
-  
+
   <!-- Unified Shell Header -->
   <header class="shell-header" role="banner">
     <div class="shell-brand">
@@ -24,7 +26,7 @@
         <small>Financial Analysis Platform</small>
       </div>
     </div>
-    
+
     <!-- Primary Navigation -->
     <nav class="shell-nav" role="navigation" aria-label="Main navigation">
       <button class="nav-item active" data-module="dcf" aria-current="page">
@@ -44,7 +46,7 @@
         <span class="nav-label">Real Options</span>
       </button>
     </nav>
-    
+
     <!-- Essential Actions -->
     <div class="shell-actions">
       <button id="toggleTheme" class="primary-action" aria-pressed="false" title="Toggle Ive Theme (Alt+T)">
@@ -70,21 +72,21 @@
         <div class="loading-text">Preparing analysis...</div>
       </div>
     </div>
-    
+
     <!-- Module Container -->
     <div id="shell-content" class="shell-content">
       <!-- DCF Module (loaded by default) -->
       <div id="dcf-module" class="module" data-module="dcf" aria-labelledby="dcf-title">
         <div class="module-layout">
           <!-- Input Panel -->
-          <section class="input-panel" role="region" aria-labelledby="dcf-inputs-title">
+          <section class="input-panel" aria-labelledby="dcf-inputs-title">
             <div class="panel-header">
               <h2 id="dcf-inputs-title">Financial Assumptions</h2>
               <div class="panel-status">
                 <span class="status-indicator" id="input-status">Ready</span>
               </div>
             </div>
-            
+
             <!-- Progressive Disclosure Sections -->
             <div class="assumption-sections">
               <!-- Core Assumptions - Always Visible -->
@@ -102,12 +104,13 @@
                     <div class="input-group">
                       <label for="revenue" class="input-label">Current Revenue</label>
                       <div class="input-with-unit">
-                        <input id="revenue" type="number" step="0.01" value="500" placeholder="500" class="input-field" />
+                        <input id="revenue" type="number" step="0.01" value="500" placeholder="500"
+                          class="input-field" />
                         <span class="input-unit">$MM</span>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div class="input-grid">
                     <div class="input-group">
                       <label for="growthY1" class="input-label">Year 1 Growth</label>
@@ -133,14 +136,14 @@
                   </div>
                 </div>
               </div>
-              
+
               <!-- Advanced Parameters - Collapsible -->
               <div class="section collapsible-section" data-section="advanced">
-                <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+                <button class="section-header" aria-expanded="false">
                   <h3 class="section-title">Advanced Parameters</h3>
                   <span class="section-hint">Detailed modeling assumptions</span>
                   <span class="expand-icon">⌄</span>
-                </div>
+                </button>
                 <div class="section-content" aria-hidden="true">
                   <div class="input-grid">
                     <div class="input-group">
@@ -163,7 +166,7 @@
                       <span class="input-hint">Revenue per $1 new capital</span>
                     </div>
                   </div>
-                  
+
                   <div class="input-grid">
                     <div class="input-group">
                       <label for="shares" class="input-label">Shares Outstanding</label>
@@ -182,14 +185,14 @@
                   </div>
                 </div>
               </div>
-              
+
               <!-- Sensitivity Analysis - Collapsible -->
               <div class="section collapsible-section" data-section="sensitivity">
-                <div class="section-header" role="button" tabindex="0" aria-expanded="false">
+                <button class="section-header" aria-expanded="false">
                   <h3 class="section-title">Sensitivity Analysis</h3>
                   <span class="section-hint">Range testing parameters</span>
                   <span class="expand-icon">⌄</span>
-                </div>
+                </button>
                 <div class="section-content" aria-hidden="true">
                   <div class="input-grid">
                     <div class="input-group">
@@ -207,7 +210,7 @@
                       </div>
                     </div>
                   </div>
-                  
+
                   <div class="input-grid">
                     <div class="input-group">
                       <label for="tgMin" class="input-label">Growth Range Min</label>
@@ -227,7 +230,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Action Panel -->
             <div class="action-panel">
               <button id="runModelButton" class="primary-button">
@@ -240,16 +243,16 @@
               </div>
             </div>
           </section>
-          
+
           <!-- Output Panel -->
-          <section class="output-panel" role="region" aria-labelledby="dcf-outputs-title">
+          <section class="output-panel" aria-labelledby="dcf-outputs-title">
             <div class="panel-header">
               <h2 id="dcf-outputs-title">Valuation Results</h2>
               <div class="panel-status">
                 <span class="status-indicator" id="output-status">Idle</span>
               </div>
             </div>
-            
+
             <!-- Key Metrics - Primary Focus -->
             <div class="key-metrics">
               <div class="metric primary-metric">
@@ -257,7 +260,7 @@
                 <div class="metric-value" id="psVal">—</div>
                 <div class="metric-unit">USD</div>
               </div>
-              
+
               <div class="metrics-secondary">
                 <div class="metric">
                   <div class="metric-label">Enterprise Value</div>
@@ -269,7 +272,7 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Charts - The Visual Story -->
             <div class="chart-narrative">
               <div class="chart-section">
@@ -282,41 +285,41 @@
                   </div>
                 </div>
                 <div class="chart-container">
-                  <canvas id="primaryChart" width="800" height="300" aria-label="Primary financial chart" role="img"></canvas>
-                  <div id="chartTooltip" class="chart-tooltip" style="display:none"></div>
+                  <canvas id="primaryChart" width="800" height="300" aria-label="Primary financial chart"></canvas>
+                  <div id="chartTooltip" class="chart-tooltip"></div>
                 </div>
               </div>
-              
+
               <div class="chart-section">
                 <div class="chart-header">
                   <h3 class="chart-title">Sensitivity Analysis</h3>
                   <div class="chart-summary">WACC vs Terminal Growth</div>
                 </div>
                 <div class="chart-container">
-                  <canvas id="sensitivityChart" width="800" height="300" aria-label="Sensitivity heatmap" role="img"></canvas>
+                  <canvas id="sensitivityChart" width="800" height="300" aria-label="Sensitivity heatmap"></canvas>
                 </div>
               </div>
             </div>
           </section>
         </div>
       </div>
-      
+
       <!-- Other modules will be loaded dynamically -->
-      <div id="lbo-module" class="module" data-module="lbo" style="display: none;">
+  <div id="lbo-module" class="module" data-module="lbo">
         <div class="module-placeholder">
           <h2>LBO Module</h2>
           <p>Leveraged Buyout analysis interface will be loaded here</p>
         </div>
       </div>
-      
-      <div id="ma-module" class="module" data-module="ma" style="display: none;">
+
+  <div id="ma-module" class="module" data-module="ma">
         <div class="module-placeholder">
           <h2>M&A Module</h2>
           <p>Mergers & Acquisitions analysis interface will be loaded here</p>
         </div>
       </div>
-      
-      <div id="real-options-module" class="module" data-module="real-options" style="display: none;">
+
+  <div id="real-options-module" class="module" data-module="real-options">
         <div class="module-placeholder">
           <h2>Real Options Module</h2>
           <p>Real Options analysis interface will be loaded here</p>
@@ -329,4 +332,5 @@
   <script type="module" src="./js/shell.js"></script>
   <script type="module" src="./js/modules/dcf-core.js"></script>
 </body>
+
 </html>

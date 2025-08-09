@@ -510,9 +510,10 @@
 
 .chart-tooltip {
   position: absolute;
+  display: none;
   background: var(--surface-overlay);
-  backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   color: var(--text-primary);
   padding: var(--space-3) var(--space-4);
   border-radius: var(--radius-md);
@@ -524,6 +525,10 @@
   z-index: 1000;
   max-width: 250px;
   transition: all var(--transition-fast) var(--ease-out-quart);
+}
+
+.chart-tooltip.is-visible {
+  display: block;
 }
 
 /* ===== INTERACTIVE STATES ===== */

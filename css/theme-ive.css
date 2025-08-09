@@ -6,73 +6,87 @@
 
 /* Scoped design tokens override via inheritance */
 body.theme-ive {
-  /* Palette: light, calm neutrals with restrained accent */
-  --surface-primary: #F7F9FC;   /* page background */
-  --surface-secondary: #FFFFFF;  /* panels */
-  --surface-elevated: #FFFFFF;   /* headers/cards */
-  --surface-overlay: rgba(255,255,255,0.85);
+    /* Palette: light, calm neutrals with restrained accent */
+    --surface-primary: #F7F9FC;
+    /* page background */
+    --surface-secondary: #FFFFFF;
+    /* panels */
+    --surface-elevated: #FFFFFF;
+    /* headers/cards */
+    --surface-overlay: rgba(255, 255, 255, 0.85);
 
-  --text-primary: #0B1220;
-  --text-secondary: #364152;
-  --text-tertiary: #5B6B7A;
-  --text-muted: #7D8B99;
+    --text-primary: #0B1220;
+    --text-secondary: #364152;
+    --text-tertiary: #5B6B7A;
+    --text-muted: #7D8B99;
 
-  --accent-primary: #2563EB;           /* restrained blue */
-  --accent-primary-hover: #1E40AF;
-  --accent-primary-active: #1D4ED8;
+    --accent-primary: #2563EB;
+    /* restrained blue */
+    --accent-primary-hover: #1E40AF;
+    --accent-primary-active: #1D4ED8;
 
-  --accent-success: #118D57;
-  --accent-warning: #B76E00;
-  --accent-error: #D92D20;
+    --accent-success: #118D57;
+    --accent-warning: #B76E00;
+    --accent-error: #D92D20;
 
-  --border-subtle: #E6EAF0;
-  --border-medium: #D8DEE6;
-  --border-focus: #2563EB;
+    --border-subtle: #E6EAF0;
+    --border-medium: #D8DEE6;
+    --border-focus: #2563EB;
 
-  /* Typography fine-tuning */
-  --font-size-sm: 0.95rem; /* slightly larger for readability */
-  --line-height-base: 1.6;
+    /* Typography fine-tuning */
+    --font-size-sm: 0.95rem;
+    /* slightly larger for readability */
+    --line-height-base: 1.6;
 
-  /* Softer radii and shadows */
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 16px;
+    /* Softer radii and shadows */
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 16px;
 
-  --shadow-sm: 0 1px 2px rgba(16,24,40,0.04);
-  --shadow-base: 0 1px 3px rgba(16,24,40,0.06);
-  --shadow-md: 0 4px 12px rgba(16,24,40,0.08);
-  --shadow-lg: 0 10px 24px rgba(16,24,40,0.10);
+    --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.04);
+    --shadow-base: 0 1px 3px rgba(16, 24, 40, 0.06);
+    --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.08);
+    --shadow-lg: 0 10px 24px rgba(16, 24, 40, 0.10);
 }
 
 /* Smooth visual shift when toggling theme */
-html, body.theme-ive, body.theme-ive * {
-  transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
+html,
+body.theme-ive,
+body.theme-ive * {
+    transition: background-color var(--transition-base), color var(--transition-base), border-color var(--transition-base);
 }
 
 /* Shell refinements */
 body.theme-ive .shell-header {
-  background: rgba(255,255,255,0.7);
-  -webkit-backdrop-filter: saturate(120%) blur(14px);
-  backdrop-filter: saturate(120%) blur(14px);
-  border-bottom: 1px solid var(--border-subtle);
-  box-shadow: var(--shadow-sm);
+    background: rgba(255, 255, 255, 0.7);
+    -webkit-backdrop-filter: saturate(120%) blur(14px);
+    backdrop-filter: saturate(120%) blur(14px);
+    border-bottom: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-sm);
 }
 
 /* Branding: quieter mark */
 body.theme-ive .shell-logo {
-  background: linear-gradient(135deg, #111827 0%, #374151 100%);
+    background: linear-gradient(135deg, #111827 0%, #374151 100%);
 }
 
 /* Navigation: remove emojis, emphasize clarity */
-body.theme-ive .nav-icon { display: none; }
-body.theme-ive .nav-item {
-  min-width: 64px;
-  color: var(--text-secondary);
+body.theme-ive .nav-icon {
+    display: none;
 }
-body.theme-ive .nav-item:hover { background: #F3F6FA; }
+
+body.theme-ive .nav-item {
+    min-width: 64px;
+    color: var(--text-secondary);
+}
+
+body.theme-ive .nav-item:hover {
+    background: #F3F6FA;
+}
+
 body.theme-ive .nav-item.active {
-  background: var(--accent-primary);
-  color: #fff;
+    background: var(--accent-primary);
+    color: #fff;
 }
 
 /* Panels & sections: remove decorative gradients */
@@ -81,56 +95,62 @@ body.theme-ive .panel-header,
 body.theme-ive .chart-container,
 body.theme-ive .scenario-panel,
 body.theme-ive .monte-carlo-panel {
-  background: var(--surface-secondary);
-  border: 1px solid var(--border-subtle);
-  box-shadow: none;
+    background: var(--surface-secondary);
+    border: 1px solid var(--border-subtle);
+    box-shadow: none;
 }
 
 /* Inputs: crisp borders, focus clarity */
 body.theme-ive .input-field {
-  background: #FFFFFF;
+    background: #FFFFFF;
 }
+
 body.theme-ive .input-field:hover {
-  background: #FFFFFF;
-  border-color: var(--border-medium);
+    background: #FFFFFF;
+    border-color: var(--border-medium);
 }
+
 body.theme-ive .input-field:focus {
-  background: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
 /* Primary action: solid yet calm */
 body.theme-ive .primary-action,
 body.theme-ive .primary-button {
-  border-radius: 10px;
-  box-shadow: var(--shadow-sm);
+    border-radius: 10px;
+    box-shadow: var(--shadow-sm);
 }
 
 /* Key metrics: reduce ornamentation, focus on numbers */
 body.theme-ive .primary-metric {
-  background: #FFFFFF;
-  border: 1px solid var(--border-subtle);
+    background: #FFFFFF;
+    border: 1px solid var(--border-subtle);
 }
-body.theme-ive .primary-metric::before { display: none; }
+
+body.theme-ive .primary-metric::before {
+    display: none;
+}
+
 body.theme-ive .metrics-secondary .metric {
-  background: #FFFFFF;
+    background: #FFFFFF;
 }
 
 /* Charts: calm frame without heavy effects */
 body.theme-ive .chart-container {
-  background: #FFFFFF;
+    background: #FFFFFF;
 }
 
 /* Action hints: lighter badges */
 body.theme-ive .action-hints .hint {
-  background: #F3F6FA;
-  color: var(--text-tertiary);
+    background: #F3F6FA;
+    color: var(--text-tertiary);
 }
 
 /* Accessibility: ensure sufficient contrast in light theme */
 @media (prefers-contrast: high) {
-  body.theme-ive {
-    --border-subtle: #B0B8C4;
-    --text-secondary: #1F2937;
-  }
+    body.theme-ive {
+        --border-subtle: #B0B8C4;
+        --text-secondary: #1F2937;
+    }
 }
