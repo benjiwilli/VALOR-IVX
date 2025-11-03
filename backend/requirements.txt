@@ -49,7 +49,7 @@ dask==2023.8.1
 vaex==4.17.0
 streamlit==1.27.0
 gradio==3.40.1
-dash==2.14.0
+dash==3.2.0
 bokeh==3.2.2
 altair==5.1.2
 holoviews==1.17.1
